@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/phoenix-marketing-api-all" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/phoenix-marketing-api-all/phoenix-marketing-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/phoenix-marketing-api-all/phoenix-marketing-dto" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/phoenix-marketing-api-all/phoenix-marketing-mock" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/phoenix-marketing-backend" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/phoenix-marketing-backend/phoenix-marketing-backend-commons" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/phoenix-marketing-backend/phoenix-marketing-backend-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/phoenix-marketing-backend/phoenix-marketing-backend-mq" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/phoenix-marketing-backend/phoenix-marketing-backend-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/phoenix-marketing-backend/phoenix-marketing-backend-test" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/phoenix-marketing-backend/phoenix-marketing-backend-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/phoenix-marketing-middle-end" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/phoenix-marketing-middle-end/phoenix-marketing-middle-end-commons" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/phoenix-marketing-middle-end/phoenix-marketing-middle-end-controller" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/phoenix-marketing-middle-end/phoenix-marketing-middle-end-mq" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/phoenix-marketing-middle-end/phoenix-marketing-middle-end-test" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/phoenix-marketing-middle-end/phoenix-marketing-middle-end-war" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>
