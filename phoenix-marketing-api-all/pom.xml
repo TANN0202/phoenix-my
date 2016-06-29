@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>phoenix-marketing-api-parent</artifactId>
+	<packaging>pom</packaging>
+	<parent>
+		<groupId>com.arvatosystems.phoenix</groupId>
+		<artifactId>phoenix-api-parent</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<modules>
+		<module>phoenix-marketing-api</module>
+		<module>phoenix-marketing-mock</module>
+		<module>phoenix-marketing-dto</module>
+	</modules>
+
+
+	<properties>
+		<phoenix-marketing-api.version>1.0.0</phoenix-marketing-api.version>
+		<phoenix-marketing-mock.version>1.0.0</phoenix-marketing-mock.version>
+		<phoenix-marketing-dto.version>1.0.0</phoenix-marketing-dto.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.arvatosystems.phoenix</groupId>
+				<artifactId>phoenix-marketing-api</artifactId>
+				<version>${phoenix-marketing-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.arvatosystems.phoenix</groupId>
+				<artifactId>phoenix-marketing-mock</artifactId>
+				<version>${phoenix-marketing-mock.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.arvatosystems.phoenix</groupId>
+				<artifactId>phoenix-marketing-dto</artifactId>
+				<version>${phoenix-marketing-dto.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+</project>
