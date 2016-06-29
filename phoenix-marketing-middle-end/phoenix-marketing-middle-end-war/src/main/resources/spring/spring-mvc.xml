@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/util                     
+        http://www.springframework.org/schema/util/spring-util-3.0.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+
+    <!-- 启动Spring注解配置支持，启动后BeetlViewResolver会自动调用init方法，不需要特殊配置 -->
+    <context:annotation-config/>
+    
+    <context:component-scan base-package="com.arvatosystems.**.controller,com.arvatosystems.eos.lib.**.controller,com.arvatosystems.eos.lib.util,com.arvatosystems.eos.lib.session" />
+
+    <!-- json 支持 Begin -->
+    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <util:list id="beanList">
+                <ref bean="mappingJacksonHttpMessageConverter" />
+            </util:list>
+        </property>
+    </bean>
+
+    <bean id="mappingJacksonHttpMessageConverter"
+        class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+<!--                <value>application/json;charset=UTF-8</value> -->
+                <value>text/plain;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
+    <!-- json 支持 End -->
+
+    <!-- Spring MVC配置 -->
+    
+<!--     <mvc:interceptors> -->
+        <!-- 使用请求参数切换本地化 例如: /?locale=de -->
+<!--         <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" p:paramName="lang"/> -->
+<!--     </mvc:interceptors> -->
+    
+
+    <!-- 默认访问跳转到登录页面 -->
+    <mvc:view-controller path="/" view-name="forward:/login" />
+    
+    <!-- 登录成功后的页面 -->
+    <mvc:view-controller path="/index" view-name="forward:/job/index" />
+    
+    <!-- 资源目录 -->
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+
+    <!-- 上传文件支持 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">        
+        <property name="defaultEncoding" value="utf-8"></property>
+<!--         <property name="maxUploadSize" value="10485760000"></property> -->
+<!--         <property name="maxInMemorySize" value="40960"></property> -->
+    </bean>
+
+
+    <!-- 定义异常处理页面 -->
+    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver" >
+        <property name="exceptionMappings">
+            <props>
+                <prop key="org.apache.shiro.authz.AuthorizationException">error/error</prop>
+                <prop key="java.sql.SQLException">error/error</prop>
+                <prop key="java.io.IOException">error/error</prop>
+            </props>
+        </property>
+    </bean>
+    
+</beans>

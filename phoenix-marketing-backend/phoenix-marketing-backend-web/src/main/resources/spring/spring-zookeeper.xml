@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+       xmlns:context="http://www.springframework.org/schema/context"         
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd  
+           http://www.springframework.org/schema/context 
+           http://www.springframework.org/schema/context/spring-context-3.1.xsd">  
+           
+    <bean id="zkClientFactory"  class="com.arvatosystems.eos.lib.util.ZkClientFactory">
+        <property name="nameSpace" value="${datasource.zk.nameSpace}" />
+        <property name="zkhost" value="${datasource.zk.zkhost}" />
+        <property name="baseSleepTimeMs" value="${datasource.zk.baseSleepTimeMs}" />
+        <property name="maxRetries" value="${datasource.zk.maxRetries}" />
+        <property name="connectionTimeoutMs" value="${datasource.zk.connectionTimeoutMs}" />
+    </bean>
+
+</beans>

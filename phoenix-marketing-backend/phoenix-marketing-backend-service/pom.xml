@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.arvatosystems.phoenix</groupId>
+		<artifactId>phoenix-marketing-backend</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>phoenix-marketing-backend-service</artifactId>
+	<dependencies>
+		<dependency>
+			<groupId>com.arvatosystems.eos.lib</groupId>
+			<artifactId>eos-lib-service</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.arvatosystems.eos.lib</groupId>
+			<artifactId>eos-lib-cache</artifactId>
+		</dependency>
+	  	<dependency>
+	  		<groupId>com.arvatosystems.phoenix</groupId>
+	  		<artifactId>phoenix-marketing-backend-test</artifactId>
+	  		<scope>test</scope>
+	  	</dependency>
+	  	<dependency>
+	  		<groupId>com.arvatosystems.phoenix</groupId>
+	  		<artifactId>phoenix-marketing-backend-dao</artifactId>
+	  	</dependency>
+	  	
+	</dependencies>
+</project>

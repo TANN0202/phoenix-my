@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cache="http://www.springframework.org/schema/cache"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+    http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.1.xsd">
+
+    <import resource="classpath*:spring/spring-*.xml" />
+    
+
+    <!-- 启用缓存注解功能，这个是必须的，否则注解不会生效  -->  
+    <cache:annotation-driven cache-manager="cacheManager" />
+    
+    <bean id="serializer" class="com.arvatosystems.eos.lib.cache.common.JvmSerializer" />
+    
+    <bean id="cacheManager" class="com.arvatosystems.eos.lib.cache.jedis.JedisCacheManager">
+        <property name="namedClients">
+            <map>
+                <entry key="default" value="${redis.host}" />
+            </map>
+        </property>
+        <property name="cacheStoreJedisHashRouter">
+            <bean class="com.arvatosystems.eos.lib.cache.router.CacheStoreJedisHashRouter" />
+        </property>
+        <property name="serializer" ref="serializer" />
+        <property name="expires" value="686400" /><!--1 day, second -->
+        <property name="maxActive" value="100" />
+        <property name="testOnBorrow" value="true" />
+    </bean>
+    
+</beans>

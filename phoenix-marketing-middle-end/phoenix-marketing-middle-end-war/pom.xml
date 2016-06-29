@@ -1,0 +1,102 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.arvatosystems.phoenix</groupId>
+		<artifactId>phoenix-marketing-middle-end</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>phoenix-marketing-middle-end-war</artifactId>
+	<packaging>war</packaging>
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.arvatosystems.phoenix</groupId>
+			<artifactId>phoenix-marketing-middle-end-controller</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>hibernate-core</artifactId>
+					<groupId>org.hibernate</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>hibernate-entitymanager</artifactId>
+					<groupId>org.hibernate</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>hibernate-jpa-2.0-api</artifactId>
+					<groupId>org.hibernate.javax.persistence</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.arvatosystems.phoenix</groupId>
+			<artifactId>phoenix-marketing-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.arvatosystems.phoenix</groupId>
+			<artifactId>phoenix-marketing-middle-end-mq</artifactId>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<warName>marketing-middle-end</warName>
+					<!-- 非min.js和min.css结尾的文件不直接拷贝 -->
+					<warSourceExcludes>
+						WEB-INF/lib/javax.servlet-api-${javax.servlet.version}.jar
+					</warSourceExcludes>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>net.alchim31.maven</groupId>
+				<artifactId>yuicompressor-maven-plugin</artifactId>
+				<version>1.5.1</version>
+				<executions>
+					<execution>
+						<!-- <phase>process-resources</phase> -->
+						<goals>
+							<goal>compress</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- 包含js文件和css文件 -->
+					<includes>
+						<include>**/*.js</include>
+						<include>**/*.css</include>
+					</includes>
+					<!-- 排除本来就压缩的js文件，比如jquery.min.js xxx-min.js之类的文件 -->
+					<excludes>
+						<exclude>resources/lib/**</exclude>
+						<exclude>**/*.min.js</exclude>
+						<exclude>**/*-min.js</exclude>
+                        <exclude>**/*.min.css</exclude>
+                        <exclude>**/*-min.css</exclude>
+					</excludes>
+					<!-- 读取js,css文件采用UTF-8编码 -->
+					<encoding>utf8</encoding>
+					<failOnWarning>false</failOnWarning>
+					<!-- 若存在已压缩的文件，会先对比源文件是否有改动有改动便压缩，无改动就不压缩 -->
+					<force>false</force>
+					<!-- 压缩后不增加后缀 -->
+					<nosuffix>true</nosuffix>
+					<!-- 在指定的列号后插入新行 -->
+					<linebreakpos>-1</linebreakpos>
+					<!-- 源目录，即需压缩的根目录 -->
+					<sourceDirectory>${basedir}/resources</sourceDirectory>
+					<!-- 不显示js可能的错误 -->
+					<jswarn>false</jswarn>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+	
+
+</project>

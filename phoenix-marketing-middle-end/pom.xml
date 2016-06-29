@@ -1,0 +1,216 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.arvatosystems.phoenix</groupId>
+		<artifactId>phoenix-middle-end-parent</artifactId>
+		<version>1.0.0</version>
+	</parent>
+  <artifactId>phoenix-marketing-middle-end</artifactId>
+	<packaging>pom</packaging>
+	<modules>
+		<module>phoenix-marketing-middle-end-controller</module>
+		<module>phoenix-marketing-middle-end-war</module>
+		<module>phoenix-marketing-middle-end-mq</module>
+		<module>phoenix-marketing-middle-end-test</module>
+		<module>phoenix-marketing-middle-end-commons</module>
+	</modules>
+	
+	<properties>
+		<eos-lib-controller.version>1.0.4</eos-lib-controller.version>
+		<eos-lib-cache.version>1.0.4</eos-lib-cache.version>
+		<phoenix-marketing-api.version>1.0.0</phoenix-marketing-api.version>
+		<phoenix-marketing-mock.version>1.0.0</phoenix-marketing-mock.version>
+		<phoenix-marketing-dto.version>1.0.0</phoenix-marketing-dto.version>
+		<phoenix-marketing-middle-end-controller.version>1.0.0</phoenix-marketing-middle-end-controller.version>
+		<phoenix-marketing-middle-end-mq.version>1.0.0</phoenix-marketing-middle-end-mq.version>
+		<phoenix-marketing-middle-end-test.version>1.0.0</phoenix-marketing-middle-end-test.version>
+		<phoenix-marketing-middle-end-commons.version>1.0.0</phoenix-marketing-middle-end-commons.version>
+		<phoenix-marketing-middle-end-war.version>1.0.0</phoenix-marketing-middle-end-war.version>
+	</properties>
+	
+	<dependencies>
+
+		<!--aspectjweaver Begin -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+		</dependency>
+		<!--aspectjweaver End -->
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+
+		<!-- zookeeper utils Begin -->
+		<dependency>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-framework</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>zookeeper</artifactId>
+					<groupId>org.apache.zookeeper</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-recipes</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>zookeeper</artifactId>
+					<groupId>org.apache.zookeeper</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+		</dependency>
+		<!-- zookeeper utils End -->
+
+		<!-- json utils Begin -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+		</dependency>
+
+		<!-- json utils End -->
+
+		<!-- servlet api Begin -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
+		<!-- servlet api End -->
+
+		<dependency>
+			<groupId>com.github.sgroschupf</groupId>
+			<artifactId>zkclient</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>zookeeper</artifactId>
+					<groupId>org.apache.zookeeper</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib-nodep</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>dubbo</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
+		
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
+		
+	</dependencies>
+	
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.arvatosystems.phoenix</groupId>
+				<artifactId>phoenix-marketing-middle-end-controller</artifactId>
+				<version>${phoenix-marketing-middle-end-controller.version}</version>
+			</dependency>
+		  	<dependency>
+		  		<groupId>com.arvatosystems.phoenix</groupId>
+		  		<artifactId>phoenix-marketing-api</artifactId>
+		  		<version>${phoenix-marketing-api.version}</version>
+		  	</dependency>
+		  	<dependency>
+		  		<groupId>com.arvatosystems.phoenix</groupId>
+		  		<artifactId>phoenix-marketing-dto</artifactId>
+		  		<version>${phoenix-marketing-dto.version}</version>
+		  	</dependency>
+		  	<dependency>
+		  		<groupId>com.arvatosystems.phoenix</groupId>
+		  		<artifactId>phoenix-marketing-mock</artifactId>
+		  		<version>${phoenix-marketing-mock.version}</version>
+		  	</dependency>
+		  	<dependency>
+		  		<groupId>com.arvatosystems.eos.lib</groupId>
+		  		<artifactId>eos-lib-controller</artifactId>
+		  		<version>${eos-lib-controller.version}</version>
+		  	</dependency>
+			<dependency>
+				<groupId>com.arvatosystems.phoenix</groupId>
+				<artifactId>phoenix-marketing-middle-end-mq</artifactId>
+				<version>${phoenix-marketing-middle-end-mq.version}</version>
+			</dependency>
+	        <dependency>
+	        	<groupId>com.arvatosystems.phoenix</groupId>
+	        	<artifactId>
+	        		phoenix-marketing-middle-end-commons
+	        	</artifactId>
+	        	<version>${phoenix-marketing-middle-end-commons.version}</version>
+	        </dependency>
+	        <dependency>
+	        	<groupId>com.arvatosystems.phoenix</groupId>
+	        	<artifactId>phoenix-marketing-middle-end-test</artifactId>
+	        	<version>${phoenix-marketing-middle-end-test.version}</version>
+	        </dependency>
+		  	<dependency>
+		  		<groupId>com.arvatosystems.eos.lib</groupId>
+		  		<artifactId>eos-lib-cache</artifactId>
+		  		<version>${eos-lib-cache.version}</version>
+		  	</dependency>
+	        <dependency>
+	            <groupId>commons-fileupload</groupId>
+	            <artifactId>commons-fileupload</artifactId>
+	            <version>1.2.2</version>
+	        </dependency>
+		</dependencies>
+	</dependencyManagement>
+</project>

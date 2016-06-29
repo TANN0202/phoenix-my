@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
+	default-lazy-init="false">
+
+    <!-- mock service -->
+	<bean id ="userServiceMock" class = "com.arvatosystems.demo.service.mock.UserServiceMock" />
+	<dubbo:service interface="com.arvatosystems.demo.service.api.IUserService" ref="userServiceMock" timeout="3000" protocol="injvm" />
+
+
+</beans>

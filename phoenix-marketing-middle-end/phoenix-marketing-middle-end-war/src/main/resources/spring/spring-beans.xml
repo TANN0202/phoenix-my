@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+       xmlns:context="http://www.springframework.org/schema/context"         
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd  
+           http://www.springframework.org/schema/context 
+           http://www.springframework.org/schema/context/spring-context-3.1.xsd">  
+           
+    <!-- 根据不同环境分别引入属性文件,位于src/main/resources/conf目录下 -->
+    <beans profile="dev">
+        <context:property-placeholder location="classpath:conf/common/*.properties,classpath:conf/dev/*.properties" />
+    </beans>
+    
+    <beans profile="mock">
+        <context:property-placeholder location="classpath:conf/common/*.properties,classpath:conf/mock/*.properties" />
+    </beans>
+    
+<!--     <beans profile="ut"> -->
+<!--         <context:property-placeholder location="classpath:conf/common/*.properties,classpath:conf/ut/*.properties" /> -->
+<!--     </beans> -->
+
+    <beans profile="test">
+        <context:property-placeholder location="classpath:conf/common/*.properties,classpath:conf/test/*.properties" />
+    </beans>
+    
+    <beans profile="sit">
+        <context:property-placeholder location="classpath:conf/common/*.properties,classpath:conf/sit/*.properties" />
+    </beans>
+    
+    <beans profile="uat">
+        <context:property-placeholder location="classpath:conf/common/*.properties,classpath:conf/uat/*.properties" />
+    </beans>
+    
+    <beans profile="prd">
+        <context:property-placeholder location="classpath:conf/common/*.properties,classpath:conf/prd/*.properties" />
+    </beans>
+
+
+</beans>
